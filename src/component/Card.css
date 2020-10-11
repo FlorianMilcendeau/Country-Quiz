@@ -24,6 +24,7 @@
 .ball:nth-of-type(3) {
   animation-delay: -0.5s;
 }
+
 @keyframes waiting {
   from {
     background-color: rgba(96, 102, 208, 0.7);
@@ -49,6 +50,7 @@
   border-radius: 1rem;
   padding: 2rem;
   max-width: 70vw;
+  min-width: 70vw;
   height: 60vh;
   color: #2f527b;
   transition: all 0.5s linear;
@@ -87,6 +89,7 @@
 
   .card {
     max-width: 29rem;
+    min-width: 29rem;
     height: 32.1875rem;
   }
 }
