@@ -29,7 +29,6 @@
 - [Overview](#overview)
   - [Built With](#built-with)
 - [Features](#features)
-- [How to use](#how-to-use)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -37,7 +36,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](https://github.com/FlorianMilcendeau/Country-Quiz/blob/master/screenshot.png)
 
 In this challenge I was learn to deploy a web site with firebase 
 
