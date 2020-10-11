@@ -1,0 +1,92 @@
+.ballWaiting {
+  display: flex;
+}
+
+.ball {
+  display: block;
+  background-color: cadetblue;
+  width: 1rem;
+  height: 1rem;
+  color: aliceblue;
+  border-radius: 5rem;
+  animation-name: waiting;
+  animation-duration: 0.9s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  margin-right: 0.2rem;
+  animation-timing-function: ease-in-out;
+}
+
+.ball:nth-of-type(2) {
+  animation-delay: -0.7s;
+}
+
+.ball:nth-of-type(3) {
+  animation-delay: -0.5s;
+}
+@keyframes waiting {
+  from {
+    background-color: rgba(96, 102, 208, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    background-color: #2f527b;
+    transform: scale(0);
+  }
+  to {
+    background-color: rgba(96, 102, 208, 0.7);
+    transform: scale(1);
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 70vw;
+  height: 60vh;
+  color: #2f527b;
+  transition: all 0.5s linear;
+}
+
+.decoration {
+  top: -4rem;
+  width: 8rem;
+  position: absolute;
+  right: 0;
+}
+
+.second-title {
+  color: #2f527b;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.flag {
+  width: 5rem;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.next-answer {
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .decoration {
+    top: -5rem;
+    width: initial;
+  }
+
+  .card {
+    max-width: 29rem;
+    height: 32.1875rem;
+  }
+}

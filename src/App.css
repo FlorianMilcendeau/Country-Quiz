@@ -1,38 +1,83 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-title {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.6rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.second-title {
+  font-size: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn {
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.next-answer {
+  align-self: flex-end;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #f9a826;
+}
+
+.secondary {
+  align-self: center;
+  border: 1px solid #1d355d;
+  color: #1d355d;
+  background-color: #fff;
+  margin-left: 0.5rem;
+  transition: all 0.25s linear;
+}
+
+.content-result {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.content-result > h2 {
+  font-size: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.result {
+  color: #6fcf97;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .secondary:hover {
+    background-color: #1d355d;
+    color: #fff;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-title {
+    font-size: 2.25rem;
+  }
+
+  .second-title {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 1.125rem;
+    padding: 0.8rem 2.5rem;
+  }
+
+  .btn:hover {
+    cursor: url(./assets/smallCursorHand.png) 25 15, auto;
   }
 }

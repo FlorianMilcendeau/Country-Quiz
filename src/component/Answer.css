@@ -1,0 +1,79 @@
+.content-response {
+  display: flex;
+  padding: 0 1rem;
+  align-items: center;
+  min-width: 60vw;
+  border: 0.1rem solid rgba(96, 102, 208, 0.7);
+  border-radius: 1rem;
+  color: rgba(96, 102, 208, 0.7);
+  margin-top: 1rem;
+  transition: all 0.25s linear;
+}
+
+.index-answer {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-right: 1.5rem;
+}
+
+.answer {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.valid,
+.error {
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center right 5%;
+  background-size: 8%;
+  transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+}
+
+.valid {
+  border-color: #60bf88;
+  background-color: #60bf88;
+  background-image: url("../assets/icons/valid.svg");
+}
+
+.error {
+  border-color: #ea8282;
+  background-color: #ea8282;
+  color: #fff;
+  background-image: url("../assets/icons/error.svg");
+}
+
+@media screen and (min-width: 768px) {
+  .content-response {
+    min-width: 25rem;
+  }
+
+  .content-response:hover {
+    color: #fff;
+    background-color: #f9a826;
+    border-color: #f9a826;
+    cursor: url(../assets/smallCursorHand.png) 25 15, auto;
+  }
+
+  .index-answer {
+    font-size: 1.5rem;
+  }
+
+  .answer {
+    font-size: 1.125rem;
+  }
+  .valid,
+  .valid:hover {
+    border-color: #60bf88;
+    background-color: #60bf88;
+    background-image: url("../assets/icons/valid.svg");
+  }
+
+  .error,
+  .error:hover {
+    border-color: #ea8282;
+    background-color: #ea8282;
+    color: #fff;
+    background-image: url("../assets/icons/error.svg");
+  }
+}
