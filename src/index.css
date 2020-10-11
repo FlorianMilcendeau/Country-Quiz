@@ -36,6 +36,7 @@ code {
 footer {
   font-family: "Montserrat", sans-serif;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .link-profil-challenge {
@@ -43,4 +44,10 @@ footer {
   text-transform: uppercase;
   font-style: normal;
   text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    font-size: 1rem;
+  }
 }
