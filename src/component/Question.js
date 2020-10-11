@@ -14,7 +14,7 @@ const Question = ({ results, play, choice }) => {
     let array = [];
     const number = Math.floor(Math.random() * 250);
 
-    if (laps <= 10) {
+    if (laps < 10) {
       axios.get("https://restcountries.eu/rest/v2").then((res) => {
         setResponse({
           capital: res.data[number][choice],
@@ -84,11 +84,13 @@ const Question = ({ results, play, choice }) => {
       <img className="decoration" src={imgAdventure} alt="decoration" />
       <h2 className="second-title">
         {/.svg/g.test(response.capital) ? (
-          <img lazy="true" className="flag" src={response.capital} alt="flag country" />
+          <>
+            <img lazy="true" className="flag" src={response.capital} alt="flag country" />
+            Which country does this flag belong to ?
+          </>
         ) : (
-          response.capital
-        )}{" "}
-        is the capital of
+          `${response.capital} is the capital of`
+        )}
       </h2>
       <div className="content-answer">
         {answers.map((answer, index) => {
