@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
-import Answer from "./Answer";
-import imgAdventure from "../assets/undraw_adventure_4hum 1.svg";
-import axios from "axios";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from 'react';
+import Answer from './Answer';
+import imgAdventure from '../assets/undraw_adventure_4hum 1.svg';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import ProgressBar from './ProgressBar';
 
 const Question = ({ results, play, choice }) => {
   const [laps, setLaps] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [next, setNext] = useState(false);
-  const [response, setResponse] = useState({ capital: "", country: "" });
+  const [response, setResponse] = useState({ capital: '', country: '' });
 
   useEffect(() => {
     let array = [];
     const number = Math.floor(Math.random() * 250);
 
     if (laps < 10) {
-      axios.get("https://restcountries.eu/rest/v2").then((res) => {
+      axios.get('https://restcountries.eu/rest/v2').then((res) => {
         setResponse({
           capital: res.data[number][choice],
           country: res.data[number].name,
@@ -39,7 +40,8 @@ const Question = ({ results, play, choice }) => {
 
   //if the answer it not checked I verify if the answer is correct.
   const checkAnswer = (e) => {
-    document.querySelector(".next-answer").style.visibility = "visible";
+    document.querySelector('.next-answer').style.visibility = 'visible';
+    document.querySelector('.progressBar').style.width = laps * 10 + '%';
 
     let element = e.currentTarget,
       children = element.parentNode.children,
@@ -47,52 +49,58 @@ const Question = ({ results, play, choice }) => {
     const value = element.lastElementChild.textContent;
 
     for (const child of children) {
-      if (child.classList.contains("valid")) {
+      if (child.classList.contains('valid')) {
         checked = true;
       }
     }
 
     if (!checked) {
       if (value === response.country) {
-        element.classList.add("valid");
+        element.classList.add('valid');
         results(1);
       } else {
-        element.classList.add("error");
+        element.classList.add('error');
 
         for (let child of children) {
           if (child.lastElementChild.textContent === response.country) {
-            child.classList.add("valid");
+            child.classList.add('valid');
           }
         }
       }
     }
   };
 
-  const nextAnswer = () => {
+  const nextAnswer = (e) => {
     setNext(!next);
-    document.querySelector(".next-answer").style.visibility = "hidden";
+    e.target.style.visibility = 'hidden';
 
-    let allAnswer = document.querySelectorAll(".content-response");
+    const allAnswer = document.querySelectorAll('.content-response');
 
     for (const answer of allAnswer) {
-      answer.classList.remove("error", "valid");
+      answer.classList.remove('error', 'valid');
     }
   };
 
   return (
     <>
-      <img className="decoration" src={imgAdventure} alt="decoration" />
-      <h2 className="second-title">
+      <img className='decoration' src={imgAdventure} alt='decoration' />
+      <ProgressBar />
+      <h2 className='second-title'>
         {/.svg/g.test(response.capital) ? (
           <>
-            <img lazy="true" className="flag" src={response.capital} alt="flag country" />
+            <img
+              lazy='true'
+              className='flag'
+              src={response.capital}
+              alt='flag country'
+            />
             Which country does this flag belong to ?
           </>
         ) : (
           `${response.capital} is the capital of`
         )}
       </h2>
-      <div className="content-answer">
+      <div className='content-answer'>
         {answers.map((answer, index) => {
           return (
             <Answer
@@ -105,7 +113,7 @@ const Question = ({ results, play, choice }) => {
           );
         })}
       </div>
-      <button onClick={() => nextAnswer()} className="btn next-answer">
+      <button onClick={(e) => nextAnswer(e)} className='btn next-answer'>
         next
       </button>
     </>
