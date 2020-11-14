@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import Answer from './Answer';
-import imgAdventure from '../assets/undraw_adventure_4hum 1.svg';
-import axios from 'axios';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+
 import ProgressBar from './ProgressBar';
+import Answer from './Answer';
+
+import imgAdventure from '../assets/undraw_adventure_4hum 1.svg';
 
 const Question = ({ results, play, choice }) => {
   const [laps, setLaps] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [next, setNext] = useState(false);
   const [response, setResponse] = useState({ capital: '', country: '' });
+
+  const buttonRef = useRef(null);
+  const progressBarRef = useRef(null);
+  const wrapperAnswerRef = useRef(null);
 
   useEffect(() => {
     let array = [];
@@ -40,8 +46,8 @@ const Question = ({ results, play, choice }) => {
 
   //if the answer it not checked I verify if the answer is correct.
   const checkAnswer = (e) => {
-    document.querySelector('.next-answer').style.visibility = 'visible';
-    document.querySelector('.progressBar').style.width = laps * 10 + '%';
+    buttonRef.current.style.visibility = 'visible';
+    progressBarRef.current.style.width = laps * 10 + '%';
 
     let element = e.currentTarget,
       children = element.parentNode.children,
@@ -74,7 +80,7 @@ const Question = ({ results, play, choice }) => {
     setNext(!next);
     e.target.style.visibility = 'hidden';
 
-    const allAnswer = document.querySelectorAll('.content-response');
+    const allAnswer = wrapperAnswerRef.current.children;
 
     for (const answer of allAnswer) {
       answer.classList.remove('error', 'valid');
@@ -84,7 +90,7 @@ const Question = ({ results, play, choice }) => {
   return (
     <>
       <img className='decoration' src={imgAdventure} alt='decoration' />
-      <ProgressBar />
+      <ProgressBar ref={progressBarRef} />
       <h2 className='second-title'>
         {/.svg/g.test(response.capital) ? (
           <>
@@ -100,7 +106,7 @@ const Question = ({ results, play, choice }) => {
           `${response.capital} is the capital of`
         )}
       </h2>
-      <div className='content-answer'>
+      <div ref={wrapperAnswerRef} className='content-answer'>
         {answers.map((answer, index) => {
           return (
             <Answer
@@ -113,7 +119,10 @@ const Question = ({ results, play, choice }) => {
           );
         })}
       </div>
-      <button onClick={(e) => nextAnswer(e)} className='btn next-answer'>
+      <button
+        ref={buttonRef}
+        onClick={(e) => nextAnswer(e)}
+        className='btn next-answer'>
         next
       </button>
     </>

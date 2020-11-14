@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import './ProgressBar.css';
 
-const ProgressBar = (params) => (
+const ProgressBar = forwardRef((props, ref) => (
   <div className='wrapperProgress'>
-    <div className='progressBar'></div>
+    <div ref={ref} className='progressBar'></div>
   </div>
-);
+));
 
 export default ProgressBar;
